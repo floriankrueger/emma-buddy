@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Navbar/>
         <div class=News>
             <div class="Headline">
                 <h1>Tipp des Tages</h1>
@@ -18,12 +17,10 @@
 
 <script>
 
-import Navbar from './navbar';
 
 export default {
     name: 'Aktuelles',
     components: {
-        Navbar
     },
     data(){/** TODO: Anbinden an firebase */
         return {
