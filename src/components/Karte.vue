@@ -42,13 +42,15 @@ export default {
   data () {
     return {
       markers: [
-      { id: 'a', position: { lat: 3, lng: 101 } },
-      { id: 'b', position: { lat: 5, lng: 99 } },
-      { id: 'c', position: { lat: 6, lng: 97 } },
+      { id: 'a', position: { lat: 51.9456253051757, lng: 7.630627632141110 } },
+      { id: 'b', position: { lat: 51.95608139038080, lng: 7.6254777908325100 } },
+      { id: 'c', position: { lat: 51.95888137817380, lng: 7.63306999206543 } },
+      { id: 'd', position: { lat: 51.95331954956050, lng: 7.642856597900390 } },
+      { id: 'e', position: { lat: 51.95616912841790, lng: 7.6343536376953100 } },
+      { id: 'f', position: { lat: 51.954044342041000, lng: 7.631182670593260} },
+      { id: 'g', position: { lat: 6, lng: 97 } },
       ],
       lines: [
-        { id: '1', path: [{ lat: 3, lng: 101 }, { lat: 5, lng: 99 }] },
-        { id: '2', path: [{ lat: 5, lng: 99 }, { lat: 6, lng: 97 }] }
       ],
     }
   },
