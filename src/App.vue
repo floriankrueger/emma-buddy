@@ -1,24 +1,24 @@
 <template>
   <div id="app">
     <div>
-    <Slide :closeOnNavigation="true">
-      <div class="nav"> 
-        <router-link to='/'>Aktuelles</router-link>
-            <router-link to='/berater'>Berater</router-link>
-            <router-link to='/chat'> Chat</router-link>
-            <router-link to='/karte'>Karte</router-link>
-            <router-link to='/impressum'>Impressum</router-link>
+      <Slide :closeOnNavigation="true">
+        <div class="nav"> 
+          <router-link to='/'>Aktuelles</router-link>
+          <router-link to='/berater'>Berater</router-link>
+          <router-link to='/chat'> Chat</router-link>
+          <router-link to='/karte'>Karte</router-link>
+          <router-link to='/impressum'>Impressum</router-link>
+        </div>
+      </Slide>
     </div>
-    </Slide>
-    </div>
-    <div>
+    <div class="container-fluid">
       <router-view />
     </div>
-     
   </div>
 </template>
 
 <script>
+
 import { Slide } from 'vue-burger-menu'
 
 export default {
