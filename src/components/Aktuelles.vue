@@ -53,9 +53,4 @@ export default {
     width: 90%;
     margin: auto;
 }
-.sticky{
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
 </style>
