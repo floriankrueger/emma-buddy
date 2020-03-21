@@ -1,3 +1,4 @@
+<!-- Für Karte notwendig -->
 <template>
   <div>
     <div class="google-map" ref="googleMap"></div>

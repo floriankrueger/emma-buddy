@@ -1,3 +1,4 @@
+//für Karte
 import colorPalette from '@/constants/colorPalette'
 
 const { COLOR_POINT, COLOR_LANDSCAPE, COLOR_BORDERS, COLOR_WATER, COLOR_LINE, COLOR_POINT_FILL, COLOR_SELECTED_POINT } = colorPalette

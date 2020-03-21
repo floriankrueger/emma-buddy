@@ -1,3 +1,4 @@
+<!-- Karte um Service-stellen anzuzeigen, die grade offen sind (wohl aktuell eher weniger) -->
 <template>
     <div>
         Karte

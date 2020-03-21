@@ -1,3 +1,4 @@
+//für Karte
 export default {
     COLOR_POINT: 'rgb(243,114,114)',
     COLOR_POINT_FILL: 'rgb(255,255,255)',
