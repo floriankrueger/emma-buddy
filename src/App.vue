@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div>
     <Slide :closeOnNavigation="true">
       <div class="nav"> 
         <router-link to='/'>Aktuelles</router-link>
@@ -9,6 +10,7 @@
             <router-link to='/impressum'>Impressum</router-link>
     </div>
     </Slide>
+    </div>
     <div>
       <router-view />
     </div>
@@ -38,6 +40,8 @@ export default {
   display: flex;
   justify-content: flex-start;
    align-items: flex-start;
+  flex-direction: column;
+  margin-top: 80px;
 }
 .nav{
     display:flex;
