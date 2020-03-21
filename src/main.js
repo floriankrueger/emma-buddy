@@ -19,15 +19,14 @@ Vue.config.productionTip = false
 
 const router = new VueRouter({ routes })
 
-let app;
+let app = new Vue({
+  el: "#app",
+  router,
+  store,
+  render: h => h(App)
+})
+
 fb.auth.onAuthStateChanged(user => {
   console.log(`user ${user.isAnonymous}`)
-  if (!app) {
-    app = new Vue({
-      el: "#app",
-      router,
-      store,
-      render: h => h(App)
-    })
-  }
+  app.$store.commit('setCurrentUser', user)
 })

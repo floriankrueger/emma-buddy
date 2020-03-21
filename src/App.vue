@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <div>
+    <div v-if="isLoggedOut" class="container-fluid">
+      <p>Einen Moment bitte…</p>
+    </div>
+    <div v-if="isLoggedIn">
       <Slide :closeOnNavigation="true">
         <div class="nav"> 
           <router-link to='/'>Aktuelles</router-link>
@@ -11,7 +14,7 @@
         </div>
       </Slide>
     </div>
-    <div class="container-fluid">
+    <div v-if="isLoggedIn" class="container-fluid">
       <router-view />
     </div>
   </div>
@@ -23,6 +26,14 @@ import { Slide } from 'vue-burger-menu'
 
 export default {
   name: 'App',
+  computed: {
+    isLoggedIn: function() {
+      return this.$store.state.currentUser ? true : false
+    },
+    isLoggedOut: function() {
+      return this.$store.state.currentUser ? false : true
+    }
+  },
   components: {
     Slide
   },
