@@ -2,11 +2,11 @@
   <div id="app">
     <Slide :closeOnNavigation="true">
       <div class="nav"> 
-        <router-link to='/' @click="closeSidebarPanel">Aktuelles</router-link>
-            <router-link to='/berater' @click="closeSidebarPanel">Berater</router-link>
-            <router-link to='/chat' @click="closeSidebarPanel"> Chat</router-link>
-            <router-link to='/karte' @click="closeSidebarPanel">Karte</router-link>
-            <router-link to='/impressum' @click="closeSidebarPanel">Impressum</router-link>
+        <router-link to='/'>Aktuelles</router-link>
+            <router-link to='/berater'>Berater</router-link>
+            <router-link to='/chat'> Chat</router-link>
+            <router-link to='/karte'>Karte</router-link>
+            <router-link to='/impressum'>Impressum</router-link>
     </div>
     </Slide>
     <div>
@@ -24,12 +24,6 @@ export default {
   components: {
     Slide
   },
-  
-methods: {
-            closeSidebarPanel() {
-                this.isPanelOpen = false;
-            },
-   }
 }
 </script>
 
