@@ -20,6 +20,17 @@ Vue.config.productionTip = false
 
 const router = new VueRouter({ routes })
 
+if (router.currentRoute.path === '/login') {
+  const currentUser = store.state.currentUser
+  if (currentUser && currentUser.isAnonymous) {
+    fb.signOut()
+  } else {
+    router.push('/')
+  }
+} else {
+  fb.signInAnonymously()
+}
+
 let app = new Vue({
   el: "#app",
   router,
@@ -27,9 +38,19 @@ let app = new Vue({
   render: h => h(App)
 })
 
-fb.auth.onAuthStateChanged(user => {
-  app.$store.commit('setCurrentUser', user)
-  startUpdatingBuddies()
-})
-
 fetchBlogPosts()
+
+fb.auth.onAuthStateChanged(user => {
+  const currentUser = app.$store.state.currentUser
+  app.$store.commit('setCurrentUser', user)
+
+  if (currentUser && user) {
+    if (currentUser.isAnonymous && !user.isAnonymous) {
+      router.push('/chats')
+    } else {
+      startUpdatingBuddies()
+    }
+  } else {
+    startUpdatingBuddies()
+  }
+})

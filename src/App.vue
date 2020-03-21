@@ -19,6 +19,7 @@
           <router-link to='/berater' class="navlink">Berater</router-link>
           <router-link to='/chat' class="navlink"> Chat</router-link>
           <router-link to='/karte' class="navlink">Karte</router-link>
+          <button v-if="isLoggedInAsBuddy" class="navlink" v-on:click="logout">Abmelden</button>
           </div><div class="navimpressum">
           <router-link to='/impressum' class="navlink">Impressum</router-link>
           </div>
@@ -35,10 +36,15 @@
 <script>
 
 import { Slide } from 'vue-burger-menu'
+const fb = require("./firebaseConfig.js")
 
 export default {
   name: 'App',
   computed: {
+    isLoggedInAsBuddy: function() {
+      const user = this.$store.state.currentUser
+      return user && !user.isAnonymous
+    },
     isLoggedIn: function() {
       return this.$store.state.currentUser ? true : false
     },
@@ -49,6 +55,11 @@ export default {
   components: {
     Slide
   },
+  methods: {
+    logout: () => {
+      fb.signOut()
+    }
+  }
 }
 </script>
 
