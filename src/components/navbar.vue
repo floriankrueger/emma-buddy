@@ -1,32 +1,26 @@
 <template>
-    <div>
-        <button @click="aktuelles">
-            Aktuelles
-            </button>
-            <button @click="aktuelles">
-            Aktuelles
-            </button>
-            <button @click="aktuelles">
-            Aktuelles
-            </button>
-            <button @click="aktuelles">
-            Aktuelles
-            </button>
-            <button @click="aktuelles">
-            Aktuelles
-            </button>
+<div>
+    <div class="nav"> 
+        <router-link to='/'>Aktuelles</router-link>
+            <router-link to='/berater'>Berater</router-link>
+            <router-link to='/chat'>Chat</router-link>
+            <router-link to='/karte'>Karte</router-link>
+            <router-link to='/impressum'>Impressum</router-link>
     </div>
+    <div>
+        
+    </div>
+</div>
 </template>
 
 <script>
-//import VueRouter from 'vue-router';
+
 export default {
   name: 'Navbar',
+  
 
   methods: {
-    aktuelles: function () {
-      this.$router.push('HelloWorld')
-    }
+    
   }
 }
 </script>
@@ -45,5 +39,10 @@ li {
 }
 a {
   color: #42b983;
+}
+.nav{
+    display:flex;
+    flex-direction:column;
+    color: #42b983;
 }
 </style>
