@@ -1,13 +1,10 @@
 <template>
     <div>
         <div class=News>
-            <div class="Headline">
-                <h1>Tipp des Tages</h1>
-                <hr>
-            </div>
             <div class="News-container" id="meldungen">
                 <div v-for="meldung in meldungen" :key="meldung.id" class="News-item">
                     <h2>{{ meldung.titel }}</h2>
+                    <hr>
                     <p>{{ meldung.text }}</p>
                 </div>
             </div>
@@ -83,20 +80,27 @@ export default {
 
 <style scoped>
 .News{
-    background-color: lightgray;
+    background-color: white;
     font-family: cursive;
-}
-.Headline{
-    font-size: large;
+    width: 80%;
+    margin: auto;
+    border: solid gray;
+
 }
 .News-container{
     font-family:'Times New Roman', Times, serif;
+    width: 90%;
+    margin: auto;
 }
 .News-item{
+    background-color: #29b0d0;
     font-family: inherit;
     font-size: medium;
     width: 75%;
     margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 20px;
 }
 .sticky{
     position: fixed;
