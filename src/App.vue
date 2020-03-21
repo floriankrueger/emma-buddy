@@ -97,7 +97,7 @@ export default {
     justify-content:space-around;
 }
 .navimpressum{
-    height: 10vh;
+    height: 15vh;
 }
 .navlink {color: #ffffff;}
 .banner{
