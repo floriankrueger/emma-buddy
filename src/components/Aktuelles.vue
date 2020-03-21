@@ -93,7 +93,7 @@ export default {
     margin: auto;
 }
 .News-item{
-    background-color: #29b0d0;
+    background-color: #29b1d069;
     font-family: inherit;
     font-size: medium;
     width: 75%;
@@ -101,6 +101,7 @@ export default {
     margin-top: 1em;
     margin-bottom: 1em;
     border-radius: 20px;
+
 }
 .sticky{
     position: fixed;
