@@ -24,17 +24,35 @@ let features = ["auth", "database", "messaging", "storage"].filter(
 )
 console.log(`Firebase SDK loaded with ${features.join(", ")}`)
 
-firebase
-    .auth()
-    .signInAnonymously()
-    .catch(function (error) {
-        var errorCode = error.code
-        var errorMessage = error.message
-        console.error(`${errorMessage} (${errorCode})`)
-    })
+const signInAnonymously = function() {
+    if (auth.currentUser) { return }
+    firebase
+        .auth()
+        .signInAnonymously()
+        .catch(function (error) {
+            var errorCode = error.code
+            var errorMessage = error.message
+            console.error(`anonymous login failed: ${errorMessage} (${errorCode})`)
+        })
+}
+
+const signOut = function() {
+    if (!auth.currentUser) { return }
+    firebase
+        .auth()
+        .signOut()
+        .catch(function (error) {
+            var errorCode = error.code
+            var errorMessage = error.message
+            console.error(`logout failed: ${errorMessage} (${errorCode})`)
+        })
+}
 
 export {
+    firebase,
     db,
     auth,
-    currentUser
+    currentUser,
+    signInAnonymously,
+    signOut
 }
