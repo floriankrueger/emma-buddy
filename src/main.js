@@ -1,9 +1,16 @@
 import Vue from 'vue'
-import App from './App.vue'
+
 import VueRouter from 'vue-router'
-import routes from './routes';
+
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
+
+import App from './App.vue'
+import routes from './routes';
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_APP_API_KEY,
@@ -22,6 +29,8 @@ let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => ty
 console.log(`Firebase SDK loaded with ${features.join(', ')}`)
 
 Vue.use(VueRouter)
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 Vue.config.productionTip = false
 
