@@ -5,10 +5,13 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        currentUser: null
+        currentUser: null,
+        buddies: []
     },
     actions: {
-
+        // updateBuddies({ commit, state }) {
+            
+        // }
     },
     mutations: {
         setCurrentUser(state, val) {
