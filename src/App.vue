@@ -1,22 +1,31 @@
 <template>
   <div id="app">
     <div>
-      <navbar></navbar>
+    <Slide :closeOnNavigation="true">
+      <div class="nav"> 
+        <router-link to='/'>Aktuelles</router-link>
+            <router-link to='/berater'>Berater</router-link>
+            <router-link to='/chat'> Chat</router-link>
+            <router-link to='/karte'>Karte</router-link>
+            <router-link to='/impressum'>Impressum</router-link>
+    </div>
+    </Slide>
     </div>
     <div>
       <router-view />
     </div>
+     
   </div>
 </template>
 
 <script>
-import Navbar from './components/navbar.vue'
+import { Slide } from 'vue-burger-menu'
 
 export default {
   name: 'App',
   components: {
-    Navbar
-  }
+    Slide
+  },
 }
 </script>
 
@@ -31,5 +40,12 @@ export default {
   display: flex;
   justify-content: flex-start;
    align-items: flex-start;
+  flex-direction: column;
+  margin-top: 80px;
+}
+.nav{
+    display:flex;
+    flex-direction:column;
+    color: #42b983;
 }
 </style>
