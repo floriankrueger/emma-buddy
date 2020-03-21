@@ -25,7 +25,7 @@ export default {
     components: {
         Navbar
     },
-    data(){
+    data(){/** TODO: Anbinden an firebase */
         return {
             meldungen: [
                 {
