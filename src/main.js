@@ -9,7 +9,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 import App from "./App.vue"
 import routes from "./routes"
 import { store } from "./store.js"
-import { startUpdatingBuddies } from "./firebaseActions"
+import { startUpdatingBuddies, fetchBlogPosts } from "./firebaseActions"
 const fb = require("./firebaseConfig.js")
 
 Vue.use(VueRouter)
@@ -31,3 +31,5 @@ fb.auth.onAuthStateChanged(user => {
   app.$store.commit('setCurrentUser', user)
   startUpdatingBuddies()
 })
+
+fetchBlogPosts()

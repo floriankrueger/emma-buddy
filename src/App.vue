@@ -1,16 +1,28 @@
 <template>
   <div id="app">
+    <div class="banner">
+      <div></div>
+      <img src="@/assets/Logo_Emma.png" height="100" width= "100" class="logo">
+    </div>
     <div v-if="isLoggedOut" class="container-fluid">
       <p>Einen Moment bitte…</p>
     </div>
     <div v-if="isLoggedIn">
       <Slide :closeOnNavigation="true">
-        <div class="nav"> 
-          <router-link to='/'>Aktuelles</router-link>
-          <router-link to='/berater'>Berater</router-link>
-          <router-link to='/chat'> Chat</router-link>
-          <router-link to='/karte'>Karte</router-link>
-          <router-link to='/impressum'>Impressum</router-link>
+        <div class= "wholeslide">
+          <div class="slidetop"> 
+            <img src="@/assets/Logo_Emma.png" class="navlogo">
+          </div>
+        <div class="nav">
+          <div class= "navtop"> 
+          <router-link to='/' class="navlink">Aktuelles</router-link>
+          <router-link to='/berater' class="navlink">Berater</router-link>
+          <router-link to='/chat' class="navlink"> Chat</router-link>
+          <router-link to='/karte' class="navlink">Karte</router-link>
+          </div><div class="navimpressum">
+          <router-link to='/impressum' class="navlink">Impressum</router-link>
+          </div>
+        </div>
         </div>
       </Slide>
     </div>
@@ -41,22 +53,60 @@ export default {
 </script>
 
 <style>
+.bm-menu{
+  background-color: #f5812a;
+}
+.bm-item-list{
+  padding:0px;
+  margin-left: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #000000;
+  margin-top: 0px;
   display: flex;
   justify-content: flex-start;
    align-items: flex-start;
   flex-direction: column;
-  margin-top: 80px;
+}
+.wholeslide{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  padding:0px;
+}
+.slidetop{
+  width: 100%;
+  height: 20vh;
 }
 .nav{
     display:flex;
     flex-direction:column;
-    color: #42b983;
+    justify-content:space-between;
+    background-color: #29b0d0;
+    width: 300px;
+    height: 73.6vh;
+}
+.navtop{
+    height: 43.6vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+}
+.navimpressum{
+    height: 15vh;
+}
+.navlink {color: #ffffff;}
+.banner{
+  align-self: center;
+  width: 98%;
+  height: 20vh;
+}
+.navlogo{
+  height: 20vh;
+  width: 20vh;
 }
 </style>
