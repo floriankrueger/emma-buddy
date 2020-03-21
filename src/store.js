@@ -15,9 +15,6 @@ export const store = new Vuex.Store({
             state.currentUser = val
         },
         updateBuddies(state, val) {
-            val.forEach(element => {
-                console.log(`- ${JSON.stringify(element)}`)
-            })
             state.buddies = val
         }
     }
