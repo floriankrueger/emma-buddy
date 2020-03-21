@@ -15,7 +15,7 @@ jobs:
       with:
         node-version: '10.x'
     - run: npm install
-    - run: npm run serve
+    - run: npm run build
       env:
         VUE_APP_FIREBASE_APP_API_KEY: ${{ secrets.VUE_APP_FIREBASE_APP_API_KEY }}
         VUE_APP_FIREBASE_APP_AUTH_DOMAIN: ${{ secrets.VUE_APP_FIREBASE_APP_AUTH_DOMAIN }}
