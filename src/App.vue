@@ -43,11 +43,13 @@
           exact
           exact-active-class="isActive"
         ><img src="@/assets/flag.svg" width="27" height="27" />FAQ</b-nav-item>
-        <li v-if="isLoggedInAsBuddy">
-          <a class="navlink" v-on:click="logout" exact exact-active-class="isActive">Abmelden</a>
-        </li>
       </ul>
       <ul class="list-unstyled components bottomNavigation">
+        <b-nav-item
+          v-if="isLoggedInAsBuddy"
+          class="bottomlink logout"
+          v-on:click="logout"
+        >Abmelden</b-nav-item>
         <b-nav-item
           to="/impressum"
           class="bottomlink"
@@ -103,6 +105,7 @@ export default {
     logout() {
       this.hideSidebar();
       fb.signOut();
+      fb.signInAnonymously();
     }
   }
 };
@@ -230,6 +233,10 @@ body {
   text-align: center;
   text-transform: uppercase;
   font-size: 10pt;
+}
+
+.bottomlink.logout {
+  color: rgb(231, 76, 60);
 }
 
 .nav-link.isActiveAtBottom {
