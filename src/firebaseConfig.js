@@ -1,6 +1,7 @@
 import * as firebase from "firebase/app"
 import "firebase/auth"
 import "firebase/database"
+import "firebase/storage"
 
 const firebaseConfig = {
     apiKey: process.env.VUE_APP_FIREBASE_APP_API_KEY,
@@ -16,6 +17,7 @@ firebase.initializeApp(firebaseConfig)
 
 const db = firebase.database()
 const auth = firebase.auth()
+const storage = firebase.storage()
 const currentUser = auth.currentUser
 
 let app = firebase.app()
@@ -24,17 +26,36 @@ let features = ["auth", "database", "messaging", "storage"].filter(
 )
 console.log(`Firebase SDK loaded with ${features.join(", ")}`)
 
-firebase
-    .auth()
-    .signInAnonymously()
-    .catch(function (error) {
-        var errorCode = error.code
-        var errorMessage = error.message
-        console.error(`${errorMessage} (${errorCode})`)
-    })
+const signInAnonymously = function() {
+    if (auth.currentUser) { return }
+    firebase
+        .auth()
+        .signInAnonymously()
+        .catch(function (error) {
+            var errorCode = error.code
+            var errorMessage = error.message
+            console.error(`anonymous login failed: ${errorMessage} (${errorCode})`)
+        })
+}
+
+const signOut = function() {
+    if (!auth.currentUser) { return }
+    firebase
+        .auth()
+        .signOut()
+        .catch(function (error) {
+            var errorCode = error.code
+            var errorMessage = error.message
+            console.error(`logout failed: ${errorMessage} (${errorCode})`)
+        })
+}
 
 export {
+    firebase,
     db,
     auth,
-    currentUser
+    storage,
+    currentUser,
+    signInAnonymously,
+    signOut
 }

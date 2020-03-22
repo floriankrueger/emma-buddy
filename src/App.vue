@@ -1,112 +1,297 @@
 <template>
-  <div id="app">
-    <div class="banner">
-      <div></div>
-      <img src="@/assets/Logo_Emma.png" height="100" width= "100" class="logo">
-    </div>
-    <div v-if="isLoggedOut" class="container-fluid">
-      <p>Einen Moment bitte…</p>
-    </div>
-    <div v-if="isLoggedIn">
-      <Slide :closeOnNavigation="true">
-        <div class= "wholeslide">
-          <div class="slidetop"> 
-            <img src="@/assets/Logo_Emma.png" class="navlogo">
-          </div>
-        <div class="nav">
-          <div class= "navtop"> 
-          <router-link to='/' class="navlink">Aktuelles</router-link>
-          <router-link to='/berater' class="navlink">Berater</router-link>
-          <router-link to='/chat' class="navlink"> Chat</router-link>
-          <router-link to='/karte' class="navlink">Karte</router-link>
-          </div><div class="navimpressum">
-          <router-link to='/impressum' class="navlink">Impressum</router-link>
-          </div>
-        </div>
-        </div>
-      </Slide>
-    </div>
-    <div v-if="isLoggedIn" class="container-fluid">
+  <div id="app" class="wrapper">
+    <b-container fluid v-if="isLoggedOut">Einen Moment bitte…</b-container>
+
+    <!-- Sidebar -->
+    <b-nav id="sidebar" vertical v-if="isLoggedIn" v-bind:class="{ active: sidebarIsActive }">
+      <ul class="list-unstyled components">
+        <li class="sidebar-header">
+          <img src="@/assets/Logo.png" class="logo" width="160" />
+        </li>
+        <b-nav-item
+          to="/"
+          class="navlink"
+          v-on:click="hideSidebar"
+          exact
+          exact-active-class="isActive"
+        ><img src="@/assets/news.svg" width="27" height="27" style="background: #1BBD9B; border-radius: 50%;" />Aktuelles</b-nav-item>
+        <b-nav-item
+          to="/berater"
+          class="navlink"
+          v-on:click="hideSidebar"
+          exact
+          exact-active-class="isActive"
+        ><img src="@/assets/support.svg" width="27" height="27" />Berater</b-nav-item>
+        <b-nav-item
+          to="/chats"
+          class="navlink"
+          v-on:click="hideSidebar"
+          exact
+          exact-active-class="isActive"
+        ><img src="@/assets/rss.svg" width="27" height="27" />Chat</b-nav-item>
+        <b-nav-item
+          to="/karte"
+          class="navlink"
+          v-on:click="hideSidebar"
+          exact
+          exact-active-class="isActive"
+        ><img src="@/assets/compas.svg" width="27" height="27" />Karte</b-nav-item>
+        <b-nav-item
+          to="/hilfe"
+          class="navlink"
+          v-on:click="hideSidebar"
+          exact
+          exact-active-class="isActive"
+        ><img src="@/assets/flag.svg" width="27" height="27" />FAQ</b-nav-item>
+        <li v-if="isLoggedInAsBuddy">
+          <a class="navlink" v-on:click="logout" exact exact-active-class="isActive">Abmelden</a>
+        </li>
+      </ul>
+      <ul class="list-unstyled components bottomNavigation">
+        <b-nav-item
+          to="/impressum"
+          class="bottomlink"
+          v-on:click="hideSidebar"
+          exact
+          exact-active-class="isActiveAtBottom"
+        >Impressum</b-nav-item>
+      </ul>
+    </b-nav>
+
+    <!-- Page Content -->
+    <div id="content" v-if="isLoggedIn">
+      <b-button id="sidebarCollapse" v-on:click="showSidebar" class="btn">
+        <i class="fas fa-bars"></i>
+      </b-button>
       <router-view />
     </div>
+
+    <!-- Dark Overlay element -->
+    <div class="overlay" v-bind:class="{ active: sidebarIsActive }" v-on:click="hideSidebar"></div>
   </div>
 </template>
 
 <script>
-
-import { Slide } from 'vue-burger-menu'
+const fb = require("./firebaseConfig.js");
 
 export default {
-  name: 'App',
+  name: "App",
   computed: {
+    isLoggedInAsBuddy: function() {
+      const user = this.$store.state.currentUser;
+      return user && !user.isAnonymous;
+    },
     isLoggedIn: function() {
-      return this.$store.state.currentUser ? true : false
+      return this.$store.state.currentUser ? true : false;
     },
     isLoggedOut: function() {
-      return this.$store.state.currentUser ? false : true
+      return this.$store.state.currentUser ? false : true;
     }
   },
-  components: {
-    Slide
+  data: () => {
+    return {
+      sidebarIsActive: false
+    };
   },
-}
+  methods: {
+    hideSidebar() {
+      this.sidebarIsActive = false;
+    },
+    showSidebar() {
+      this.sidebarIsActive = true;
+    },
+    logout() {
+      this.hideSidebar();
+      fb.signOut();
+    }
+  }
+};
 </script>
 
 <style>
-.bm-menu{
-  background-color: #f5812a;
+body {
+  font-family: "Lato", sans-serif;
 }
-.bm-item-list{
-  padding:0px;
-  margin-left: 0;
+
+.wrapper {
+  display: block;
 }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+#sidebarCollapse {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  font-size: 1em;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  /* top layer */
+  z-index: 9999;
+  transition: all 0.5s ease-in-out;
+  background-color: #566a7d;
+  border-right: 3px #586e82 solid;
+}
+
+.sidebar-header {
+  background-color: white;
   text-align: center;
-  color: #000000;
-  margin-top: 0px;
-  display: flex;
-  justify-content: flex-start;
-   align-items: flex-start;
-  flex-direction: column;
+  height: 200px;
+  position: relative;
 }
-.wholeslide{
-  display: flex;
-  flex-direction: column;
-  width:100%;
-  padding:0px;
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
 }
-.slidetop{
+
+#content {
+  position: relative;
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+.navlink {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 3em;
+  background: #41556a;
+  border-bottom: 2px #566a7d solid;
+}
+
+.navlink img {
+  margin-right: 10px;
+}
+
+.nav-link.isActive {
+  background: #34485e;
+  color: #1cbd9b;
+}
+
+.nav-link.isActive:link {
+  color: #1cbd9b;
+}
+
+.nav-link.isActive:visited {
+  color: #1cbd9b;
+}
+
+.nav-link.isActive:hover {
+  color: #1cbd9b;
+}
+
+.nav-link.isActive:active {
+  color: #1cbd9b;
+}
+
+.nav-link:link {
+  color: #ffffff;
+}
+
+.nav-link:visited {
+  color: #ffffff;
+}
+
+.nav-link:hover {
+  color: #1cbd9b;
+}
+
+.nav-link:active {
+  color: #1cbd9b;
+}
+
+.bottomNavigation {
+  line-height: 3em;
+  position: absolute;
   width: 100%;
-  height: 20vh;
+  bottom: 0;
+  list-style-type: none;
 }
-.nav{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    background-color: #29b0d0;
-    width: 300px;
-    height: 73.6vh;
+
+.bottomlink {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  background: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10pt;
 }
-.navtop{
-    height: 43.6vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-around;
+
+.nav-link.isActiveAtBottom {
+  background: none;
+  color: #1cbd9b;
 }
-.navimpressum{
-    height: 15vh;
+
+.nav-link.isActiveAtBottom:link {
+  color: #1cbd9b;
 }
-.navlink {color: #ffffff;}
-.banner{
-  align-self: center;
-  width: 98%;
-  height: 20vh;
+
+.nav-link.isisActiveAtBottomActive:visited {
+  color: #1cbd9b;
 }
-.navlogo{
-  height: 20vh;
-  width: 20vh;
+
+.nav-link.isActiveAtBottom:hover {
+  color: #1cbd9b;
+}
+
+.nav-link.isActiveAtBottom:active {
+  color: #1cbd9b;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* full screen */
+  width: 100vw;
+  height: 100vh;
+  /* transparent black */
+  background: rgba(0, 0, 0, 0.3);
+  /* middle layer, i.e. appears below the sidebar */
+  z-index: 998;
+  opacity: 0;
+  /* animate the transition */
+  transition: all 0.5s ease-in-out;
+}
+/* display .overlay when it has the .active class */
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  #sidebar {
+    left: 0;
+  }
+
+  #content {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    bottom: 0;
+    right: 0;
+  }
+
+  #sidebarCollapse {
+    display: none;
+  }
 }
 </style>

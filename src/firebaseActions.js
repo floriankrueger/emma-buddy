@@ -10,6 +10,7 @@ const startUpdatingBuddies = () => {
                 return {
                     bid: element.bid,
                     name: element.name,
+                    avatarRef: element.avatar && `buddies/${element.bid}/${element.avatar}`,
                     einrichtung: element.einrichtung,
                     standort: element.standort,
                     sprachen: Object.keys(element.sprachen),
