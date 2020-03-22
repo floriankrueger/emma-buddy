@@ -1,6 +1,7 @@
 import * as firebase from "firebase/app"
 import "firebase/auth"
 import "firebase/database"
+import "firebase/storage"
 
 const firebaseConfig = {
     apiKey: process.env.VUE_APP_FIREBASE_APP_API_KEY,
@@ -16,6 +17,7 @@ firebase.initializeApp(firebaseConfig)
 
 const db = firebase.database()
 const auth = firebase.auth()
+const storage = firebase.storage()
 const currentUser = auth.currentUser
 
 let app = firebase.app()
@@ -52,6 +54,7 @@ export {
     firebase,
     db,
     auth,
+    storage,
     currentUser,
     signInAnonymously,
     signOut
