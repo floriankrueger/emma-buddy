@@ -32,9 +32,7 @@ const startUpdatingBuddies = () => {
 const fetchBlogPosts = () => {
     var postsRef = fb.db.ref('blog')
     postsRef.once('value', function(snapshot) {
-        console.log(`${JSON.stringify(snapshot.val())}`)
         store.commit('storeBlogPosts', Object.keys(snapshot.val()).map((key) => {
-            console.log(`${key} -> ${snapshot.val()[key]}`)
             const element = snapshot.val()[key]
             return {
                 id: element.id,

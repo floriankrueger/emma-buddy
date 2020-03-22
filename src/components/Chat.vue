@@ -1,6 +1,6 @@
 <template>
     <div class="Chat-body">
-        <div v-for="message in messages" :key="message.id" class="message">
+        <div v-for="message in chatMessages.messages" :key="message.id" class="message">
            <div v-if="message.senderId==userId" align="left">
                <div class="message-own">
                     <p>{{ message.sender }}</p>
@@ -27,14 +27,17 @@ export default {
     name: 'Chat',
     data() {
         return {
-            messages: [
-                {id: 0, senderId: 0, sender: 'Dr. Müller', text: 'Hallo, schönen Abend.'},
-                {id: 1, senderId: 1, sender: 'Anonym', text: 'Hallo'},
-                {id: 2, senderId: 0, sender: 'Dr. Müller', text: 'Wie kann ich helfen?'},
-                {id: 3, senderId: 1, sender: 'Anonym', text: 'Ich weiß nicht...'},
-                {id: 4, senderId: 1, sender: 'Anonym', text: 'Ich kann es nicht beschreiben'}
-            ],
             userId: 1
+        }
+    },
+    computed: {
+        chatId: function(){
+            return this.$route.params.cid
+        },
+        chatMessages: function(){
+            console.log("test")
+            console.log(this.$store.state.chatMessages.id)
+            return this.$store.state.chatMessages.find(element => element.id == this.$route.params.cid)
         }
     }
 }
