@@ -27,8 +27,10 @@ export default {
       },
       buddyName() {
           const buddy = this.$store.state.buddies.find((element) => {
-              return element.bid === this.chat.bid
+              console.log(`${element.bid} == ${this.chat.bid} => ${element.bid == this.chat.bid ? '🟢' : '🔴'}`)
+              return element.bid == this.chat.bid
           })
+          console.log(`buddy: ${JSON.stringify(buddy)}`)
           if (buddy && buddy.name) {
               return buddy.name
           } else {
@@ -37,7 +39,7 @@ export default {
       },
       lastMessage() {
           const messages = this.$store.state.chats.find((element) => {
-              return element.cid === this.chat.cid
+              return element.cid == this.chat.cid
           })
           if (messages && messages.length) {
               return messages[messages.legth - 1].text

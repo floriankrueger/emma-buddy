@@ -18,7 +18,6 @@
   </div>
 </template>
 <script>
-const fb = require("../firebaseConfig.js");
 import Kopf from './Kopf.vue';
 import BeraterAvatar from './BeraterAvatar.vue';
 import { mapState } from "vuex";
