@@ -2,6 +2,7 @@ import Aktuelles from './components/Aktuelles.vue';
 import Berater from './components/Berater.vue';
 import BeraterListe from './components/BeraterListe.vue';
 import Chats from './components/Chats.vue';
+import Chat from './components/Chat.vue';
 import Karte from './components/Karte.vue';
 import FAQ from './components/FAQ.vue';
 import Impressum from './components/Impressum.vue'
@@ -12,6 +13,7 @@ const routes = [
     { path: '/berater', component: BeraterListe },
     { path: '/berater/:bid', component: Berater },
     { path: '/chats', component: Chats },
+    { path: '/chats/:cid', component: Chat },
     { path: '/karte', component: Karte },
     { path: '/faq', component: FAQ },
     { path: '/impressum', component: Impressum },
