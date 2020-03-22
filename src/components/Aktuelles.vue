@@ -59,6 +59,9 @@ export default {
   margin: auto;
   border: solid gray;
   text-align: center;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   height: 73vh;
 }
 .News-container {
   font-family: "Times New Roman", Times, serif;
