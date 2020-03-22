@@ -12,7 +12,6 @@ const startUpdatingBuddies = () => {
                     name: element.name,
                     avatarRef: element.avatar && `buddies/${key}/${element.avatar}`,
                     einrichtung: element.einrichtung,
-                    standort: element.standort,
                     sprachen: Object.keys(element.sprachen),
                     geschlecht: element.geschlecht,
                     status: function () {
@@ -24,7 +23,10 @@ const startUpdatingBuddies = () => {
                             return "offline"
                         }
                     },
-                    taetigkeit: element.taetigkeit
+                    taetigkeit: element.taetigkeit,
+                    qualifikationen: element.qualifikationen,
+                    schwerpunkte: Object.keys(element.schwerpunkte),
+                    bio: element.bio
                 }
             }))
 

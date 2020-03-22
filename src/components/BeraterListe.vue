@@ -12,7 +12,7 @@
           <BeraterAvatar :buddy="buddy"></BeraterAvatar>
         </router-link>
         <h5 class="mb-1">{{ buddy.name }}</h5>
-        <small>{{ buddy.einrichtung }}, {{ buddy.standort }}</small>
+        <small>{{ buddy.taetigkeit }}</small>
       </div>
     </div>
   </div>
