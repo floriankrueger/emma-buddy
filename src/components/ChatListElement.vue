@@ -27,10 +27,8 @@ export default {
       },
       buddyName() {
           const buddy = this.$store.state.buddies.find((element) => {
-              console.log(`${element.bid} == ${this.chat.bid} => ${element.bid == this.chat.bid ? '🟢' : '🔴'}`)
               return element.bid == this.chat.bid
           })
-          console.log(`buddy: ${JSON.stringify(buddy)}`)
           if (buddy && buddy.name) {
               return buddy.name
           } else {

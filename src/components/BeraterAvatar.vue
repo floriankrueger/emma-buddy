@@ -26,7 +26,6 @@ export default {
         .ref(buddy.avatarRef)
         .getDownloadURL()
         .then(function(url) {
-          console.log(JSON.stringify(url));
           that.avatarSrc = url;
         });
     } else if (buddy && buddy.geschlecht) {

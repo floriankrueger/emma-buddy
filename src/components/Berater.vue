@@ -1,19 +1,17 @@
 <template>
   <div class="container-fluid" id="berater">
-    <router-link id="beraterBack" to='/berater'>
+    <router-link id="beraterBack" to="/berater">
       <i class="fas fa-chevron-left"></i>
       Zurück
     </router-link>
     <BeraterAvatar :buddy="buddy"></BeraterAvatar>
     <h1 v-if="isBuddyLoaded">{{ buddy.name }}</h1>
-    <b-btn primary v-on:click="openChat">
-      Chat öffnen
-    </b-btn>
+    <b-btn primary v-on:click="openChat">Chat öffnen</b-btn>
   </div>
 </template>
 <script>
-import BeraterAvatar from './BeraterAvatar.vue';
-import { createChat } from '../firebaseActions';
+import BeraterAvatar from "./BeraterAvatar.vue";
+import { createChat } from "../firebaseActions";
 
 export default {
   name: "Berater",
@@ -34,12 +32,23 @@ export default {
   },
   methods: {
     openChat() {
-      const cid = createChat({ uid: this.$store.state.currentUser.uid, bid: this.$route.params.bid })
-      this.$router.push(`/chats/${cid}`)
+      const existingChat = this.$store.state.chats.find(element => {
+        return element.bid === this.$route.params.bid;
+      });
+
+      if (existingChat && existingChat.cid) {
+        this.$router.push(`/chats/${existingChat.cid}`);
+      } else {
+        const cid = createChat({
+          uid: this.$store.state.currentUser.uid,
+          bid: this.$route.params.bid
+        });
+        this.$router.push(`/chats/${cid}`);
+      }
     }
   },
   components: {
-      BeraterAvatar
+    BeraterAvatar
   }
 };
 </script>
