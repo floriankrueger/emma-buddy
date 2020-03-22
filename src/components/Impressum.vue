@@ -4,7 +4,7 @@
       assetName="pencil"
       title="Impressum"
     ></Kopf>
-    <div>
+    <div class="page">
       <h1>Impressum</h1>
 
       <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
@@ -51,16 +51,9 @@ export default {
 };
 </script>
 <style scoped>
-h1{
-  font-size: 2em;
-}
-h2{
-  font-size: 1.5em;
-}
-h3{
-  font-size: 1em;
-}
-p{
-  font-size: 0.5em;
+.page{
+   overflow-y: scroll;
+   height: 73vh;
+   overflow-x: hidden;
 }
 </style>
