@@ -7,11 +7,30 @@
     ></Kopf>
     <div class="News">
       <div class="News-container" id="meldungen">
-        <div v-for="meldung in blogPosts" :key="meldung.id" class="News-item">
+        <div class="News-item">
+          <h1>Hilfe im Alltag f&uuml;r Eltern mit Kindern in der Corona-Krise</h1>
+          <hr>
+          <p>"Mama, was ist ein Corona-Virus und warum darf ich deshalb nicht raus?" Sicherlich stellen Dir auch Deine Kinder solche Fragen, die nicht in einem Satz zu beantworten sind, so dass es Dein Kind auch versteht. Schnell und gut erklärt findest Du unten diverse Informationen für Dich selbst als Elternteil als auch für Deine Kinder, damit auch Dein Alltag in der Krisenzeit so harmonisch wie möglich verläuft:</p>
+          <p><a href="https://www.dksb.de/de/artikel/detail/hinweise-fuer-familien-in-der-corona-krise/">Hier geht’s zum Artikel</a></p>
+          <br>
+          <h2>Zusätzliche Erklärvideos für Kinder:</h2>
+          <ul style="list-style: none">
+            <li><a href="https://www.youtube.com/watch?v=GZnF8jBQrpw">ZDFtivi</a></li>
+            <li><a href="https://www.youtube.com/watch?v=XO3UZ6CztvA">Eurac Research</a></li>
+          </ul>
+        </div>
+        <div class="News-item">
+          <h1>Manchmal geht alles drunter und drüber …</h1>
+          <hr>
+          <p>...und Du brauchst Hilfe, um wieder einen klaren, kühlen Kopf zu bekommen. In 10 Minuten geht die Welt nicht unter, aber 10 Minuten Meditieren mit einer App wie Calm oder Headspace kann Dir helfen, den Boden unter den Füßen wieder zu gewinnen. </p>
+          <br>
+          <h2>Wie? Das erfährst Du hier: <a href="https://www.calm.com/">Calm</a> und <a href="https://www.headspace.com/de">Headspace</a></h2>
+        </div>
+        <!--<div v-for="meldung in blogPosts" :key="meldung.id" class="News-item">
           <h2>{{ meldung.titel }}</h2>
           <hr />
           <p>{{ meldung.text }}</p>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>
@@ -19,13 +38,13 @@
 
 <script>
 import Kopf from './Kopf.vue'
-import { mapState } from "vuex";
+/**import { mapState } from "vuex";*/
 
 export default {
   name: "Aktuelles",
-  computed: {
+  /**computed: {
     ...mapState(["blogPosts"])
-  },
+  },**/
   components: {
       Kopf
   }
@@ -54,6 +73,7 @@ export default {
   margin-top: 1em;
   margin-bottom: 1em;
   border-radius: 20px;
+  padding: 10px;
 }
 .News-item hr {
   width: 90%;
