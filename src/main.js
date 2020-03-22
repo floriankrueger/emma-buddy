@@ -42,6 +42,7 @@ fetchBlogPosts()
 
 fb.auth.onAuthStateChanged(user => {
   const currentUser = app.$store.state.currentUser
+  
   app.$store.commit('setCurrentUser', user)
 
   if (currentUser && user) {
