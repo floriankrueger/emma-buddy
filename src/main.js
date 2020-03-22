@@ -2,6 +2,8 @@ import Vue from "vue"
 
 import VueRouter from "vue-router"
 
+import AsyncComputed from 'vue-async-computed'
+
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue"
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
@@ -9,12 +11,13 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 import App from "./App.vue"
 import routes from "./routes"
 import { store } from "./store.js"
-import { startUpdatingBuddies, fetchBlogPosts } from "./firebaseActions"
+import { startUpdatingBuddies, startUpdatingUserChats, startUpdatingBuddyChats, fetchBlogPosts } from "./firebaseActions"
 const fb = require("./firebaseConfig.js")
 
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(AsyncComputed)
 
 Vue.config.productionTip = false
 
@@ -53,5 +56,11 @@ fb.auth.onAuthStateChanged(user => {
     }
   } else {
     startUpdatingBuddies()
+  }
+
+  if (user.isAnonymous) {
+    startUpdatingUserChats({ uid: user.uid })
+  } else {
+    startUpdatingBuddyChats({ bid: user.uid })
   }
 })

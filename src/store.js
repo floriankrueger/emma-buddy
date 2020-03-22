@@ -7,6 +7,7 @@ export const store = new Vuex.Store({
     state: {
         currentUser: null,
         buddies: [],
+        chats: [],
         blogPosts: []
     },
     actions: {
@@ -18,10 +19,10 @@ export const store = new Vuex.Store({
         updateBuddies(state, val) {
             state.buddies = val
         },
+        updateChats(state, val) {
+            state.chats = val
+        },
         storeBlogPosts(state, val) {
-            val.forEach(element => {
-                console.log(`- ${JSON.stringify(element)}`)
-            })
             state.blogPosts = val
         }
     }

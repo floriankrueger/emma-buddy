@@ -9,7 +9,7 @@
     <div v-for="buddy in buddies" :key="buddy.bid">
       <div class="buddy-card">
         <router-link :to="`/berater/${buddy.bid}`">
-          <b-img v-bind="mainProps" rounded="circle" alt="Circle image"></b-img>
+          <BeraterAvatar :buddy="buddy"></BeraterAvatar>
         </router-link>
         <h5 class="mb-1">{{ buddy.name }}</h5>
         <small>{{ buddy.einrichtung }}, {{ buddy.standort }}</small>
@@ -18,7 +18,9 @@
   </div>
 </template>
 <script>
-import Kopf from './Kopf.vue'
+const fb = require("../firebaseConfig.js");
+import Kopf from './Kopf.vue';
+import BeraterAvatar from './BeraterAvatar.vue';
 import { mapState } from "vuex";
 
 export default {
@@ -38,7 +40,8 @@ export default {
     ...mapState(["buddies"])
   },
   components: {
-      Kopf
+      Kopf,
+      BeraterAvatar
   }
 };
 </script>

@@ -14,7 +14,8 @@ const startUpdatingBuddies = () => {
                     einrichtung: element.einrichtung,
                     standort: element.standort,
                     sprachen: Object.keys(element.sprachen),
-                    status: function() {
+                    geschlecht: element.geschlecht,
+                    status: function () {
                         if (element.online && element.busy) {
                             return "busy"
                         } else if (element.online) {
@@ -26,15 +27,44 @@ const startUpdatingBuddies = () => {
                     taetigkeit: element.taetigkeit
                 }
             }))
-            
+
     })
 }
+
+const startUpdatingUserChats = ({ uid }) => {
+    var userChatRef = fb.db.ref(`users/${uid}/chats`)
+    userChatRef.on('value', function (snapshot) {
+        store.commit('updateChats', Object.keys(snapshot.val())
+            .map((key) => {
+                const element = snapshot.val()[key]
+                return {
+                    cid: element.cid,
+                    bid: element.bid,
+                    uid: element.uid,
+                }
+            }))
+    })
+}
+
+const startUpdatingBuddyChats = ({ bid }) => {
+    var userChatRef = fb.db.ref(`buddies/${bid}/chats`)
+    userChatRef.on('value', function (snapshot) {
+        store.commit('updateChats', Object.keys(snapshot.val())
+            .map((key) => {
+                const element = snapshot.val()[key]
+                return {
+                    cid: element.cid,
+                    bid: element.bid,
+                    uid: element.uid,
+                }
+            }))
+    })
+}
+
 const fetchBlogPosts = () => {
     var postsRef = fb.db.ref('blog')
-    postsRef.on('value', function(snapshot) {
-        console.log(`${JSON.stringify(snapshot.val())}`)
+    postsRef.on('value', function (snapshot) {
         store.commit('storeBlogPosts', Object.keys(snapshot.val()).map((key) => {
-            console.log(`${key} -> ${snapshot.val()[key]}`)
             const element = snapshot.val()[key]
             return {
                 id: element.id,
@@ -45,7 +75,30 @@ const fetchBlogPosts = () => {
     })
 }
 
+const createChat = ({ bid, uid }) => {
+    const newChat = fb.db.ref('chats').push()
+    newChat.set({
+        bid,
+        uid,
+        messages: {}
+    })
+    const cid = newChat.key
+    const newUserChatRef = fb.db.ref(`users/${uid}/chats`).push()
+    let chatNode = {
+        cid,
+        bid,
+        uid
+    }
+    newUserChatRef.set(chatNode)
+    const newBuddyChatRef = fb.db.ref(`buddies/${bid}/chats`).push()
+    newBuddyChatRef.set(chatNode)
+    return cid
+}
+
 export {
     startUpdatingBuddies,
-    fetchBlogPosts
+    startUpdatingUserChats,
+    startUpdatingBuddyChats,
+    fetchBlogPosts,
+    createChat
 }
