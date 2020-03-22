@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
     state: {
         currentUser: null,
         buddies: [],
-        blogPosts: []
+        blogPosts: [],
+        chatMessages: []
     },
     actions: {
     },
@@ -20,6 +21,9 @@ export const store = new Vuex.Store({
         },
         storeBlogPosts(state, val) {
             state.blogPosts = val
+        },
+        storeChatMessages(state, val) {
+            state.chatMessages = val
         }
     }
 })

@@ -9,7 +9,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 import App from "./App.vue"
 import routes from "./routes"
 import { store } from "./store.js"
-import { startUpdatingBuddies, fetchBlogPosts } from "./firebaseActions"
+import { startUpdatingBuddies, fetchBlogPosts, fetchChatMessages } from "./firebaseActions"
 const fb = require("./firebaseConfig.js")
 
 Vue.use(VueRouter)
@@ -39,6 +39,7 @@ let app = new Vue({
 })
 
 fetchBlogPosts()
+fetchChatMessages()
 
 fb.auth.onAuthStateChanged(user => {
   const currentUser = app.$store.state.currentUser
