@@ -180,6 +180,11 @@ body {
   margin-right: 10px;
 }
 
+.nav-link{
+  padding: 0rem 0rem;
+  margin-left: 0.5rem;
+}
+
 .nav-link.isActive {
   background: #34485e;
   color: #1cbd9b;
@@ -218,7 +223,7 @@ body {
 }
 
 .bottomNavigation {
-  line-height: 3em;
+  line-height: 1em;
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -299,6 +304,18 @@ body {
 
   #sidebarCollapse {
     display: none;
+  }
+
+  .bottomNavigation {
+  line-height: 3em;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  list-style-type: none;
+  }
+
+  .nav-link{
+  padding: 0.5rem 1rem;
   }
 }
 </style>
