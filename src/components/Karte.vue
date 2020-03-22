@@ -3,7 +3,7 @@
     <Kopf
       assetName="compas"
       title="Karte"
-      copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      copy="In Zukunft wird hier eine Karte mit Hilfeeinrichtungen in deiner Gegend sein. Sie ist hier noch nicht, weil es keine unserer Prioritäten war, da in der Krise die meisten Einrichtungen geschlossen sind. Bitte habe Verständnis."
     ></Kopf>
   </b-container>
 </template>
