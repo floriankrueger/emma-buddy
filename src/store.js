@@ -19,9 +19,6 @@ export const store = new Vuex.Store({
             state.buddies = val
         },
         storeBlogPosts(state, val) {
-            val.forEach(element => {
-                console.log(`- ${JSON.stringify(element)}`)
-            })
             state.blogPosts = val
         }
     }
