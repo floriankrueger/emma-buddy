@@ -1,4 +1,4 @@
-# supreme-octo-enigma
+# EMMA Buddy
 
 ## Project setup
 ```
