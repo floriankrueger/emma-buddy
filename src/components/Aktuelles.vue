@@ -62,7 +62,7 @@ export default {
   text-align: center;
    overflow-y: scroll;
    overflow-x: hidden;
-   height: 73vh;
+   height: 67vh;
 }
 .News-container {
   font-family: "Times New Roman", Times, serif;
