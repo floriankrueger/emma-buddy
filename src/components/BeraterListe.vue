@@ -2,8 +2,8 @@
   <div class="container-fluid" id="berater">
     <Kopf
       assetName="support"
-      title="Berater"
-      copy="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      title="EMMA:Buddys"
+      copy="Klicke einen EMMA:Buddy an, um mehr zu erfahren oder einen Chat zu starten."
     >
     </Kopf>
     <div v-for="buddy in buddies" :key="buddy.bid">

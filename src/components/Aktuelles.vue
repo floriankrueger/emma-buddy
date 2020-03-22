@@ -4,6 +4,7 @@
       assetName="news"
       assetBackground="#D8D8D8"
       title="Aktuelles"
+      copy="Auf dieser Seite findest du regelmäßig neue Beiträge zu Themen wie Erziehung, Gesundheit oder Krisenbewältigung."
     ></Kopf>
     <div class="News">
       <div class="News-container" id="meldungen">

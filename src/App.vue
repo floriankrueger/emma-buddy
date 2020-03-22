@@ -21,7 +21,7 @@
           v-on:click="hideSidebar"
           exact
           exact-active-class="isActive"
-        ><img src="@/assets/support.svg" width="27" height="27" />Berater</b-nav-item>
+        ><img src="@/assets/support.svg" width="27" height="27" />EMMA:Buddy</b-nav-item>
         <b-nav-item
           to="/chats"
           class="navlink"

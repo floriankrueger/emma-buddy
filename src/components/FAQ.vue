@@ -6,8 +6,6 @@
     ></Kopf>
     <div class= "page">
 
-<p>Wir arbeiten an einer webbasierten Beratung als digitale Untermauerung der Kinder- und Jugendhilfe und suchen Personen, die am Sonntag, den 22.3.20, die Funktionen f&uuml;r uns testen und/oder (l&auml;ngerfristig) als Berater:innen an Bord gehen m&ouml;chten.</p>
-
 <p>Als Zielgruppe wenden wir uns an Eltern und Erziehungsberechtigte, die niederschwelligen Beratungsbedarf haben.</p>
 
 <p>Hier versuchen wir, die wichtigsten Fragen zu beantworten. Sollte noch etwas offen sein, kontaktiert uns unter <a href=”mailto:emma.hackathon@gmail.com”>emma.hackathon@gmail.com</a> </p>
