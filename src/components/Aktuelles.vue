@@ -31,7 +31,7 @@ export default {
     width: 80%;
     margin: auto;
     border: solid gray;
-
+    text-align: center;
 }
 .News-container{
     font-family:'Times New Roman', Times, serif;
