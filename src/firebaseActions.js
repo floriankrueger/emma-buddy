@@ -8,9 +8,9 @@ const startUpdatingBuddies = () => {
             .map((key) => {
                 const element = snapshot.val()[key]
                 return {
-                    bid: element.bid,
+                    bid: key,
                     name: element.name,
-                    avatarRef: element.avatar && `buddies/${element.bid}/${element.avatar}`,
+                    avatarRef: element.avatar && `buddies/${key}/${element.avatar}`,
                     einrichtung: element.einrichtung,
                     standort: element.standort,
                     sprachen: Object.keys(element.sprachen),
@@ -67,7 +67,7 @@ const fetchBlogPosts = () => {
         store.commit('storeBlogPosts', Object.keys(snapshot.val()).map((key) => {
             const element = snapshot.val()[key]
             return {
-                id: element.id,
+                id: key,
                 titel: element.titel,
                 text: element.text
             }
