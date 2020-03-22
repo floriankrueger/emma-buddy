@@ -33,12 +33,13 @@ export default {
 </script>
 
 <style scoped>
-.News {
-  background-color: white;
-  font-family: cursive;
-  width: 80%;
-  margin: auto;
-  border: solid gray;
+.News{
+    background-color: white;
+    font-family: cursive;
+    width: 80%;
+    margin: auto;
+    border: solid gray;
+    text-align: center;
 }
 .News-container {
   font-family: "Times New Roman", Times, serif;
